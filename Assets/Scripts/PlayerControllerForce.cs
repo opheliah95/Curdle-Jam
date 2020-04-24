@@ -11,7 +11,7 @@ public class PlayerControllerForce : MonoBehaviour
     public float jumpPower;
     public float fallSpeed; // 'brellas.
     private float moveHorizontal;
-    public float moveVertical;
+    private float moveVertical;
     public bool isGrounded;
     
     void Start()
