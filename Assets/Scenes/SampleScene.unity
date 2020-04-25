@@ -365,7 +365,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1633991495}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1536
   isGrounded: 0
   groundedRadius: 0.2
   moveSpeed: 1000
@@ -373,8 +373,6 @@ MonoBehaviour:
   preciseMove: 1
   moveHorizontal: 0
   moveVertical: 0
-  magnetFist: {fileID: 1525920224}
-  magnetStrength: 0
 --- !u!1 &1312349935
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +385,7 @@ GameObject:
   - component: {fileID: 1312349936}
   - component: {fileID: 1312349939}
   - component: {fileID: 1312349938}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: placeholder_box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -600,6 +598,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magnetStrength: 10
+  magneticLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  ray: 0
 --- !u!1 &1633991494
 GameObject:
   m_ObjectHideFlags: 0

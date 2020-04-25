@@ -9,13 +9,14 @@ public class MagnetController : MonoBehaviour
     private float rot_z;
     public float magnetStrength;
 
-    public LayerMask layers;
+    public LayerMask magneticLayer;
 
+    private SpriteRenderer sr;
     public bool ray;
 
     void Start()
     {
-        
+        sr = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -35,9 +36,16 @@ public class MagnetController : MonoBehaviour
 
         // Magnetism! Magic!
         // TODO: On button press, not just auto.
-        ray = Physics2D.Raycast(transform.position, mousePos, magnetStrength, layers);
-        Debug.DrawRay(transform.position, mousePos, Color.white);
-        Debug.Log(ray);
+        ray = Physics2D.Raycast(transform.position, relPos, magnetStrength, magneticLayer);
+        Debug.DrawRay(transform.position, relPos * magnetStrength, Color.white);
+
+        if (ray)
+        {
+            sr.color = Color.yellow;
+        } else
+        {
+            sr.color = Color.white;
+        }
 
     }
 }
