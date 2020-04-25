@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerControllerForce : MonoBehaviour
 {
-
     public Rigidbody2D rb;
+    public Animator anim;
     public float moveSpeed;
     // public float airSpeed;
     public float jumpPower;
     public float fallSpeed; // 'brellas.
-    private float moveHorizontal;
+    public float moveHorizontal;
     private float moveVertical;
     public bool isGrounded;
     
@@ -23,9 +23,17 @@ public class PlayerControllerForce : MonoBehaviour
     {
         moveHorizontal = Input.GetAxis("Horizontal") * moveSpeed;
 
+        anim.SetFloat("Speed", Mathf.Abs(moveHorizontal));
+
+        if (moveHorizontal > 0)
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        else if (moveHorizontal < 0)
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+
         if (isGrounded && Input.GetAxis("Vertical") > 0 && moveVertical == 0)
         {
             moveVertical = jumpPower; // Input.GetAxis("Vertical") * jumpPower;
+            anim.SetBool("isJumping", true);
         } else
         {
             moveVertical = 0;
@@ -41,6 +49,7 @@ public class PlayerControllerForce : MonoBehaviour
         if (collision.gameObject.CompareTag("ground"))
         {
             isGrounded = true;
+            anim.SetBool("isJumping", false);
         }
     }
 

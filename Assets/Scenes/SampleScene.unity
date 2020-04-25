@@ -215,9 +215,9 @@ GameObject:
   - component: {fileID: 786556692}
   - component: {fileID: 786556696}
   - component: {fileID: 786556691}
-  - component: {fileID: 786556694}
   - component: {fileID: 786556693}
   - component: {fileID: 786556695}
+  - component: {fileID: 786556694}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -311,21 +311,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &786556694
-MonoBehaviour:
+--- !u!95 &786556694
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786556690}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 117a938e0659f75488f84f430b1849e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
-  rBody: {fileID: 786556693}
-  moveSpeed: 0.1
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 57860b686e0659c43b822f0375190b6a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!58 &786556695
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -339,9 +343,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.01}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.08
 --- !u!114 &786556696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,10 +359,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  anim: {fileID: 786556694}
   moveSpeed: 10
   jumpPower: 10
   fallSpeed: 1
-  moveVertical: 0
   isGrounded: 0
 --- !u!1 &983965834
 GameObject:
