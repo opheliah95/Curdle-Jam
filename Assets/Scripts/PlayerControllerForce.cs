@@ -6,6 +6,8 @@ public class PlayerControllerForce : MonoBehaviour
 {
 
     public Rigidbody2D rb;
+    public GameObject magnetFist;
+    // public float armSpeed;
     public float moveSpeed;
     // public float airSpeed;
     public float jumpPower;
@@ -13,6 +15,9 @@ public class PlayerControllerForce : MonoBehaviour
     private float moveHorizontal;
     private float moveVertical;
     public bool isGrounded;
+    public Vector3 mousePos; // Target
+    public Vector2 relPos;
+    public float rot_z;
     
     void Start()
     {
@@ -21,8 +26,10 @@ public class PlayerControllerForce : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Walking
         moveHorizontal = Input.GetAxis("Horizontal") * moveSpeed;
 
+        // Jumping
         if (isGrounded && Input.GetAxis("Vertical") > 0 && moveVertical == 0)
         {
             moveVertical = jumpPower; // Input.GetAxis("Vertical") * jumpPower;
@@ -30,6 +37,29 @@ public class PlayerControllerForce : MonoBehaviour
         {
             moveVertical = 0;
         }
+
+        // Falling
+        if (!isGrounded)
+        {
+            // TODO: If falling and has umbrella
+            // TODO: If falling without umbrella
+            // TODO: If rising...taken care of by built-in physics?
+        }
+
+        // Moving the arm.
+        mousePos = Camera.main.ScreenToWorldPoint(
+            new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z)
+            //Input.mousePosition
+        );
+        // Literally stolen from Reddit. What is a Quaternion, even?
+        // magnetFist.transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 1), (mousePos - transform.position));
+        relPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        relPos.Normalize();
+
+        rot_z = Mathf.Atan2(relPos.y, relPos.x) * Mathf.Rad2Deg;
+        magnetFist.transform.rotation = Quaternion.Euler(0f, 0f, rot_z);
+
+
 
         rb.AddForce(new Vector2(moveHorizontal, 0));
         rb.AddForce(new Vector2(0, moveVertical), ForceMode2D.Impulse);
