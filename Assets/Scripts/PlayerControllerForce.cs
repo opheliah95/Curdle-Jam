@@ -7,19 +7,26 @@ public class PlayerControllerForce : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
 
-    public GameObject magnetFist;
-    // public float armSpeed;
+    public Transform groundCheck;
+    public LayerMask whatIsGround;
+    public bool isGrounded;
+    public float groundedRadius;
+
     public float moveSpeed;
     // public float airSpeed;
     public float jumpPower;
     public float fallSpeed; // 'brellas.
     public float moveHorizontal;
-    private float moveVertical;
-    public bool isGrounded;
-    public Vector3 mousePos; // Target
-    public Vector2 relPos;
-    public float rot_z;
-    
+    public float moveVertical;
+
+    /*
+    public GameObject magnetFist;
+    private Vector3 mousePos;
+    private Vector2 relPos;
+    private float rot_z;
+    public float magnetStrength;
+    */
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -56,6 +63,7 @@ public class PlayerControllerForce : MonoBehaviour
             // TODO: If rising...taken care of by built-in physics?
         }
 
+        /*
         // Moving the arm.
         mousePos = Camera.main.ScreenToWorldPoint(
             new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z)
@@ -68,10 +76,16 @@ public class PlayerControllerForce : MonoBehaviour
 
         rot_z = Mathf.Atan2(relPos.y, relPos.x) * Mathf.Rad2Deg;
         magnetFist.transform.rotation = Quaternion.Euler(0f, 0f, rot_z);
+        */
 
-
-
-        rb.AddForce(new Vector2(moveHorizontal, 0));
+        // Apply determined forces
+        if (!preciseMove)
+        {
+            rb.AddForce(new Vector2(moveHorizontal, 0));
+        } else
+        {
+            rb.velocity = new Vector2(moveHorizontal, rb.velocity.y);
+        }
         rb.AddForce(new Vector2(0, moveVertical), ForceMode2D.Impulse);
     }
 
