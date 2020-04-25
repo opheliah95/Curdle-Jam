@@ -12,7 +12,6 @@ public class PlayerControllerForce : MonoBehaviour
     public bool isGrounded;
     public float groundedRadius;
 
-
     public float moveSpeed;
     public float jumpPower;
     public bool preciseMove;
@@ -21,10 +20,13 @@ public class PlayerControllerForce : MonoBehaviour
     public float moveHorizontal;
     public float moveVertical;
 
+    /*
     public GameObject magnetFist;
     private Vector3 mousePos;
     private Vector2 relPos;
     private float rot_z;
+    public float magnetStrength;
+    */
 
     void Start()
     {
@@ -91,6 +93,7 @@ public class PlayerControllerForce : MonoBehaviour
         }
         */
 
+        /*
         // Moving the arm.
         mousePos = Camera.main.ScreenToWorldPoint(
             new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z)
@@ -103,9 +106,16 @@ public class PlayerControllerForce : MonoBehaviour
 
         rot_z = Mathf.Atan2(relPos.y, relPos.x) * Mathf.Rad2Deg;
         magnetFist.transform.rotation = Quaternion.Euler(0f, 0f, rot_z);
+        */
 
         // Apply determined forces
-        rb.AddForce(new Vector2(moveHorizontal, 0));
+        if (!preciseMove)
+        {
+            rb.AddForce(new Vector2(moveHorizontal, 0));
+        } else
+        {
+            rb.velocity = new Vector2(moveHorizontal, rb.velocity.y);
+        }
         rb.AddForce(new Vector2(0, moveVertical), ForceMode2D.Impulse);
     }
 
