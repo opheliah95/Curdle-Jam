@@ -15,6 +15,7 @@ public class PlayerControllerForce : MonoBehaviour
 
     public float moveSpeed;
     public float jumpPower;
+    public bool preciseMove;
     // public float airSpeed;
 
     public float moveHorizontal;
@@ -24,7 +25,7 @@ public class PlayerControllerForce : MonoBehaviour
     private Vector3 mousePos;
     private Vector2 relPos;
     private float rot_z;
-    
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -34,54 +35,51 @@ public class PlayerControllerForce : MonoBehaviour
     void FixedUpdate()
     {
         // Grounded check
+        bool wasGrounded = isGrounded;
+        isGrounded = false;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, whatIsGround);
+        for (int i = 0; i < colliders.Length; i++)
         {
-            bool wasGrounded = isGrounded;
-            isGrounded = false;
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, whatIsGround);
-            for (int i = 0; i < colliders.Length; i++)
+            if (colliders[i].gameObject != gameObject)
             {
-                if (colliders[i].gameObject != gameObject)
-                {
-                    isGrounded = true;
+                isGrounded = true;
 
-                    if (!wasGrounded)
-                    {
-                        anim.SetBool("isJumping", false);
-                    }
-                    break;
+                if (!wasGrounded)
+                {
+                    anim.SetBool("isJumping", false);
                 }
+                break;
             }
         }
+
 
         // Walking
-        {
-            moveHorizontal = Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime;
+        moveHorizontal = Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime;
 
-            anim.SetFloat("Speed", Mathf.Abs(moveHorizontal));
+        anim.SetFloat("Speed", Mathf.Abs(moveHorizontal));
 
-            if (moveHorizontal > 0)
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-            else if (moveHorizontal < 0)
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-            else if (moveHorizontal == 0 && isGrounded)
-                rb.velocity = new Vector2(0, rb.velocity.y);
-        }
+        if (moveHorizontal > 0)
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        else if (moveHorizontal < 0)
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        // Precision stopping
+        else if (moveHorizontal == 0 && isGrounded && preciseMove)
+            rb.velocity = new Vector2(0, rb.velocity.y);
+
 
         // Jumping
+        if (isGrounded && Input.GetAxisRaw("Vertical") > 0)
         {
-            //if (isGrounded && Input.GetAxis("Vertical") > 0 && moveVertical == 0)
-            if (isGrounded && Input.GetAxisRaw("Vertical") > 0)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, 0);
-                moveVertical = jumpPower; // Input.GetAxis("Vertical") * jumpPower;
-                anim.SetBool("isJumping", true);
-            }
-            else
-            {
-                moveVertical = 0;
-            }
+            rb.velocity = new Vector2(rb.velocity.x, 0);  // Reset vert movement so there's no carry-over
+            moveVertical = jumpPower;
+            anim.SetBool("isJumping", true);
+        }
+        else
+        {
+            moveVertical = 0;
         }
 
+        /*
         // Falling
         {
             if (!isGrounded)
@@ -91,27 +89,27 @@ public class PlayerControllerForce : MonoBehaviour
                 // TODO: If rising...taken care of by built-in physics?
             }
         }
+        */
 
         // Moving the arm.
-        {
-            mousePos = Camera.main.ScreenToWorldPoint(
-                new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z)
-            //Input.mousePosition
-            );
-            // Literally stolen from Reddit. What is a Quaternion, even?
-            // magnetFist.transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 1), (mousePos - transform.position));
-            relPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            relPos.Normalize();
+        mousePos = Camera.main.ScreenToWorldPoint(
+            new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z)
+        //Input.mousePosition
+        );
+        // Literally stolen from Reddit. What is a Quaternion, even?
+        // magnetFist.transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 1), (mousePos - transform.position));
+        relPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        relPos.Normalize();
 
-            rot_z = Mathf.Atan2(relPos.y, relPos.x) * Mathf.Rad2Deg;
-            magnetFist.transform.rotation = Quaternion.Euler(0f, 0f, rot_z);
-        }
+        rot_z = Mathf.Atan2(relPos.y, relPos.x) * Mathf.Rad2Deg;
+        magnetFist.transform.rotation = Quaternion.Euler(0f, 0f, rot_z);
 
+        // Apply determined forces
         rb.AddForce(new Vector2(moveHorizontal, 0));
         rb.AddForce(new Vector2(0, moveVertical), ForceMode2D.Impulse);
     }
 
-    
+
     /*
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -305,7 +305,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 3
   m_AngularDrag: 0.05
   m_GravityScale: 3
   m_Material: {fileID: 0}
@@ -368,8 +368,9 @@ MonoBehaviour:
     m_Bits: 512
   isGrounded: 0
   groundedRadius: 0.2
-  moveSpeed: 1000
-  jumpPower: 20
+  moveSpeed: 2000
+  jumpPower: 30
+  preciseMove: 1
   moveHorizontal: 0
   moveVertical: 0
   magnetFist: {fileID: 1525920224}
