@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 5289961601511952970}
   - component: {fileID: 5289961601511952965}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: HeartVisualizationSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
