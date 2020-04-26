@@ -55,7 +55,7 @@ public class MagnetController : MonoBehaviour
         {
             case MagnetState.On:
                 hit = Physics2D.CircleCast(tip.position, 1, relPos, magnetStrength, magneticLayer);
-                if (hit)
+                if (hit && hit.rigidbody.gameObject.GetComponent<BlockController>().blockProperty != BlockController.BlockProperty.Stuck)
                 {
                     //magnetState = MagnetState.Pulling;
                     if (hit.distance > threshold)
@@ -63,6 +63,7 @@ public class MagnetController : MonoBehaviour
                         // Pull!
                         // TODO: Add pulling particles?
                         hit.rigidbody.velocity = -relPos * magnetSpeed; // magnetStrength;
+                        hit.rigidbody.gravityScale = 0; // Gravity removal, so it keeps getting pulled. Physics be damned.
                     } else
                     {
                         // Sticky sticky!
@@ -83,7 +84,10 @@ public class MagnetController : MonoBehaviour
                 if (Input.GetMouseButton(0))
                     magnetState = MagnetState.On;
                 if (attached)
+                {
                     attached.transform.parent = null;
+                    attached.GetComponent<Rigidbody2D>().gravityScale = 15f; // reset gravity. Hard coding is smart, yes? :(
+                }
                 break;
         }
     }
