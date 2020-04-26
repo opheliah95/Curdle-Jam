@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 938f9ddca1fb6e042872d3661ad04dc9
+=======
+guid: 5890843ffa3f36046bb72b18af29840a
+>>>>>>> cutscene
 AudioImporter:
   externalObjects: {}
   serializedVersion: 6

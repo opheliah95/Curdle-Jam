@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: ac1158d3bdf26ae4bb617ab74082b7c7
+=======
+guid: b53ca0aed6d417046ae81d43f1586322
+>>>>>>> cutscene
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
