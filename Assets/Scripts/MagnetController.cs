@@ -32,7 +32,7 @@ public class MagnetController : MonoBehaviour
         relPos.Normalize();
 
         rot_z = Mathf.Atan2(relPos.y, relPos.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, rot_z);
+        transform.rotation = Quaternion.Euler(0f, 0f, rot_z + 90);
 
         // Magnetism! Magic!
         // TODO: On button press, not just auto.
