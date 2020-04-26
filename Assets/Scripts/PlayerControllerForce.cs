@@ -20,6 +20,9 @@ public class PlayerControllerForce : MonoBehaviour
     public float moveHorizontal;
     public float moveVertical;
 
+    public Vector3 armLeft;
+    public Vector3 armRight;
+
     /*
     public GameObject magnetFist;
     private Vector3 mousePos;
@@ -36,6 +39,18 @@ public class PlayerControllerForce : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Check facing direction for animation transitions
+        if (Input.GetAxisRaw("Horizontal") >= 0.1f)
+        {
+            anim.SetBool("FacingRight", true);
+            transform.GetChild(0).transform.localPosition = armLeft;
+        }
+        else if (Input.GetAxisRaw("Horizontal") <= -0.1f)
+        {
+            anim.SetBool("FacingRight", false);
+            transform.GetChild(0).transform.localPosition = armRight;
+        }
+
         // Grounded check
         bool wasGrounded = isGrounded;
         isGrounded = false;
@@ -48,7 +63,7 @@ public class PlayerControllerForce : MonoBehaviour
 
                 if (!wasGrounded)
                 {
-                    anim.SetBool("isJumping", false);
+                    anim.SetBool("Jumping", false);
                 }
                 break;
             }
@@ -58,14 +73,11 @@ public class PlayerControllerForce : MonoBehaviour
         // Walking
         moveHorizontal = Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime;
 
-        anim.SetFloat("Speed", Mathf.Abs(moveHorizontal));
+        anim.SetFloat("WalkingLeft", moveHorizontal);
+        anim.SetFloat("WalkingRight", moveHorizontal);
 
-        if (moveHorizontal > 0)
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        else if (moveHorizontal < 0)
-            transform.rotation = Quaternion.Euler(0, 180, 0);
         // Precision stopping
-        else if (moveHorizontal == 0 && isGrounded && preciseMove)
+        if (moveHorizontal == 0 && isGrounded && preciseMove)
             rb.velocity = new Vector2(0, rb.velocity.y);
 
 
@@ -74,7 +86,7 @@ public class PlayerControllerForce : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);  // Reset vert movement so there's no carry-over
             moveVertical = jumpPower;
-            anim.SetBool("isJumping", true);
+            anim.SetBool("Jumping", true);
         }
         else
         {
