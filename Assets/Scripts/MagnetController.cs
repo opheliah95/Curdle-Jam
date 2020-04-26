@@ -53,6 +53,7 @@ public class MagnetController : MonoBehaviour
 
         switch (magnetState)
         {
+            // TODO: Switch the threshold logic to just adding a FixedJoint between gun and box on collision
             case MagnetState.On:
                 hit = Physics2D.CircleCast(tip.position, 1, relPos, magnetStrength, magneticLayer);
                 if (hit && hit.rigidbody.gameObject.GetComponent<BlockController>().blockProperty != BlockController.BlockProperty.Stuck)
@@ -77,7 +78,7 @@ public class MagnetController : MonoBehaviour
             case MagnetState.Attached:
                 //hit.rigidbody.velocity = Vector2.zero;
                 // TODO: Add attached particles to box?
-                attached.transform.parent = transform.parent.transform;
+                attached.transform.parent = transform.parent.transform; // ...just transform?
                 attached.transform.position = tip.position;
                 break;
             case MagnetState.Off:

@@ -7,6 +7,7 @@ public class BlockController : MonoBehaviour
     private Rigidbody2D rb;
     //public float fallSpeed;
     public BlockProperty blockProperty;
+    public bool makeKinematic;
 
     public enum BlockProperty
     {
@@ -36,10 +37,14 @@ public class BlockController : MonoBehaviour
                 break;
             case BlockProperty.Sticky:
                 // Stick to other blocks
+                // Debug
+                GetComponent<SpriteRenderer>().color = Color.red;
                 break;
             case BlockProperty.Stuck:
                 // Can no longer be magnetised.
                 // Also sticky (If not, use a new state, StuckAndSticky, but eh.
+                // Debug
+                GetComponent<SpriteRenderer>().color = Color.magenta;
                 break;
         }
     }
@@ -49,13 +54,48 @@ public class BlockController : MonoBehaviour
 
     }
 
-    void SetState(BlockProperty state)
+    void Sticky() // Just to shorthand some stuff
     {
-
+        SetState(BlockProperty.Sticky);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void Stuck()
     {
-        
+        SetState(BlockProperty.Stuck);
+    }
+
+    void SetState(BlockProperty state)
+    {
+        blockProperty = state;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.GetComponent<BlockController>()
+            && (blockProperty == BlockProperty.Sticky || blockProperty == BlockProperty.Stuck))
+        {
+            // Other blocks, wood or metal
+            SetState(BlockProperty.Stuck);
+            other.gameObject.GetComponent<BlockController>().SetState(BlockProperty.Stuck);
+            if (makeKinematic)
+            {
+                // Freeze; kinematic
+                rb.isKinematic = true;
+                rb.velocity = Vector2.zero;
+                rb.angularVelocity = 0;
+            }
+            else
+            {
+                // Join; adds a joint to tie them together instead.
+                gameObject.AddComponent<FixedJoint2D>();
+            }
+
+        } else if (true)
+        {
+            // Floors
+        } else if (true)
+        {
+            // Player
+        }
     }
 }
