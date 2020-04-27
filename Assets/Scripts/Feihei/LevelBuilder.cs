@@ -58,7 +58,7 @@ public class LevelBuilder : MonoBehaviour
         }
     }
 
-    static GameObject curLevel;
+    public static GameObject curLevel;
     public static void GetLevel(GameObject lvObj)
     {
         curLevel = lvObj;

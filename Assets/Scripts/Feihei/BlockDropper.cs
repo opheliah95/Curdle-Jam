@@ -25,7 +25,7 @@ public class BlockDropper : MonoBehaviour
         if(time <= 0)
         {
             GameObject obj = Instantiate(objToSpawn[Random.Range(0, objToSpawn.Count)]);
-            obj.transform.position = new Vector2(Random.Range(minX, maxX), (LevelBuilder.levels * 6)+10);
+            obj.transform.position = new Vector2(Random.Range(minX, maxX), LevelBuilder.curLevel.transform.position.y + 15);
             if (obj.GetComponent<blockSnap>())
             {
                 obj.GetComponent<blockSnap>().manualSnap(obj.transform.position,obj);
