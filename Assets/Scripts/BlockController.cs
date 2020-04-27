@@ -32,23 +32,20 @@ public class BlockController : MonoBehaviour
 
         makeKinematic = true;
 
+        orgLayer = gameObject.layer;
+
     }
 
     // Update is called once per frame
 
     void FixedUpdate()
     {
-
-
         //rb.velocity = new Vector3(0, -fallSpeed * Time.deltaTime, 0);
 
-        // This is only necessary in collisions...
         switch (blockProperty)
         {
             case BlockProperty.Default:
                 // Regular physics. If not attached, fall. If attached, don't.
-                // Debug
-                GetComponent<SpriteRenderer>().color = Color.white;
                 break;
             case BlockProperty.Sticky:
                 // Stick to other blocks
@@ -63,32 +60,11 @@ public class BlockController : MonoBehaviour
                 break;
         }
 
-     
 
-        
-   
     }
 
-    // TODO: Should stickiness be a separate script? It does work differently from box to player, but still...
     void StickTo(GameObject other)
     {
-        SetState(BlockProperty.Stuck);
-        other.GetComponent<BlockController>().SetState(BlockProperty.Stuck);
-        // TODO: If stuck and on magnet, also detach.
-
-        if (makeKinematic)
-        {
-            // Freeze; kinematic
-            rb.isKinematic = true;
-            rb.velocity = Vector2.zero;
-            rb.angularVelocity = 0;
-        }
-        else
-        {
-            // Join; adds a joint to tie them together instead.
-            FixedJoint2D joint = gameObject.AddComponent<FixedJoint2D>();
-            joint.connectedBody = other.GetComponent<Rigidbody2D>();
-        }
 
     }
 
@@ -110,41 +86,41 @@ public class BlockController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
 
-        
      
         if (other.gameObject.GetComponent<BlockController>()
             && (blockProperty == BlockProperty.Sticky || blockProperty == BlockProperty.Stuck))
 
+
         if (blockProperty == BlockProperty.Sticky || blockProperty == BlockProperty.Stuck)
 
         {
-            if (other.gameObject.GetComponent<BlockController>())
-            //&& (blockProperty == BlockProperty.Sticky || blockProperty == BlockProperty.Stuck))
+            // Other blocks, wood or metal
+            SetState(BlockProperty.Stuck);
+            other.gameObject.GetComponent<BlockController>().SetState(BlockProperty.Stuck);
+            if (makeKinematic)
             {
-                // Other blocks, wood or metal
-                StickTo(other.gameObject);
-                //SetState(BlockProperty.Stuck);
-                //other.gameObject.GetComponent<BlockController>().SetState(BlockProperty.Stuck);
-
-
-            }
-            else if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))     //CompareTag("Ground"))
-            // TODO: Give things correct tags? Or just use above line.
-            // TODO: D R Y
-            {
-                // Floors
-                SetState(BlockProperty.Stuck);
+                // Freeze; kinematic
                 rb.isKinematic = true;
                 rb.velocity = Vector2.zero;
                 rb.angularVelocity = 0;
-
             }
-            else if (other.gameObject.layer == LayerMask.NameToLayer("Player"))    //CompareTag("Player"))
+            else
             {
-                // Player
-                other.gameObject.GetComponent<PlayerControllerForce>().Sticky();
+                // Join; adds a joint to tie them together instead.
+                gameObject.AddComponent<FixedJoint2D>();
             }
+
+        } else if (true)
+        {
+            // Floors
+        } else if (true)
+        {
+            // Player
         }
-        
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }
