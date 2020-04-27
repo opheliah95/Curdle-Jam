@@ -1,9 +1,13 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 3c258e034f8131f4bb65de9645969f0a
 =======
 guid: 5143d7286d21d4d46a3268551652c616
 >>>>>>> cutscene
+=======
+guid: 3c258e034f8131f4bb65de9645969f0a
+>>>>>>> Tilemap
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

@@ -1,9 +1,8 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: ac1158d3bdf26ae4bb617ab74082b7c7
-=======
 guid: b53ca0aed6d417046ae81d43f1586322
->>>>>>> cutscene
+=======
+guid: ac1158d3bdf26ae4bb617ab74082b7c7
+>>>>>>> Tilemap
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -84,13 +83,13 @@ TextureImporter:
     spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
-    indices: 
+    indices:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+  spritePackingTag:
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:

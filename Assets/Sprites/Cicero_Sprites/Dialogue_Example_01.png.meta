@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 11a9bd9030758b642a2dcb561c83dd1f
+guid: 9d8b11e026e7bc5499d0d11381fd9991
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -80,18 +80,6 @@ TextureImporter:
     spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
-<<<<<<< HEAD
-    indices:
-    edges: []
-    weights: []
-    secondaryTextures: []
-  spritePackingTag:
-  pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
-  userData:
-  assetBundleName:
-  assetBundleVariant:
-=======
     indices: 
     edges: []
     weights: []
@@ -102,4 +90,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
->>>>>>> Tilemap
