@@ -93,21 +93,35 @@ public class BlockController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.GetComponent<BlockController>()
-            && (blockProperty == BlockProperty.Sticky || blockProperty == BlockProperty.Stuck))
+        if (blockProperty == BlockProperty.Sticky || blockProperty == BlockProperty.Stuck)
         {
-            // Other blocks, wood or metal
-            StickTo(other.gameObject);
-            //SetState(BlockProperty.Stuck);
-            //other.gameObject.GetComponent<BlockController>().SetState(BlockProperty.Stuck);
-            
+            if (other.gameObject.GetComponent<BlockController>())
+            //&& (blockProperty == BlockProperty.Sticky || blockProperty == BlockProperty.Stuck))
+            {
+                // Other blocks, wood or metal
+                StickTo(other.gameObject);
+                //SetState(BlockProperty.Stuck);
+                //other.gameObject.GetComponent<BlockController>().SetState(BlockProperty.Stuck);
 
-        } else if (true)
-        {
-            // Floors
-        } else if (true)
-        {
-            // Player
+
+            }
+            else if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))     //CompareTag("Ground"))
+            // TODO: Give things correct tags? Or just use above line.
+            // TODO: D R Y
+            {
+                // Floors
+                SetState(BlockProperty.Stuck);
+                rb.isKinematic = true;
+                rb.velocity = Vector2.zero;
+                rb.angularVelocity = 0;
+
+            }
+            else if (other.gameObject.layer == LayerMask.NameToLayer("Player"))    //CompareTag("Player"))
+            {
+                // Player
+                other.gameObject.GetComponent<PlayerControllerForce>().Sticky();
+            }
         }
+        
     }
 }
