@@ -34,8 +34,6 @@ public class BlockController : MonoBehaviour
 
     void FixedUpdate()
     {
-
-
         //rb.velocity = new Vector3(0, -fallSpeed * Time.deltaTime, 0);
 
         switch (blockProperty)
@@ -56,10 +54,7 @@ public class BlockController : MonoBehaviour
                 break;
         }
 
-     
 
-        
-   
     }
 
     void StickTo(GameObject other)
@@ -112,5 +107,10 @@ public class BlockController : MonoBehaviour
         {
             // Player
         }
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }
