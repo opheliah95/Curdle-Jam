@@ -1,5 +1,17 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 guid: e08cc0b0a7071584e8d67b7adeb2ee80
+=======
+guid: c84da5cfd5e705f4aa331c8fb51a8ccd
+>>>>>>> cutscene
+=======
+guid: e08cc0b0a7071584e8d67b7adeb2ee80
+>>>>>>> Sticky
+=======
+guid: e08cc0b0a7071584e8d67b7adeb2ee80
+>>>>>>> Tilemap
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

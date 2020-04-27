@@ -73,7 +73,7 @@ public class PlayerControllerForce : MonoBehaviour
 
                 if (!wasGrounded)
                 {
-                    anim.SetBool("isJumping", false);
+                    anim.SetBool("Jumping", false);
                 }
                 break;
             }
@@ -83,14 +83,11 @@ public class PlayerControllerForce : MonoBehaviour
         // Walking
         moveHorizontal = Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime;
 
-        anim.SetFloat("Speed", Mathf.Abs(moveHorizontal));
+        anim.SetFloat("WalkingLeft", moveHorizontal);
+        anim.SetFloat("WalkingRight", moveHorizontal);
 
-        if (moveHorizontal > 0)
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        else if (moveHorizontal < 0)
-            transform.rotation = Quaternion.Euler(0, 180, 0);
         // Precision stopping
-        else if (moveHorizontal == 0 && isGrounded && preciseMove)
+        if (moveHorizontal == 0 && isGrounded && preciseMove)
             rb.velocity = new Vector2(0, rb.velocity.y);
 
 
@@ -99,7 +96,7 @@ public class PlayerControllerForce : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);  // Reset vert movement so there's no carry-over
             moveVertical = jumpPower;
-            anim.SetBool("isJumping", true);
+            anim.SetBool("Jumping", true);
         }
         else
         {
