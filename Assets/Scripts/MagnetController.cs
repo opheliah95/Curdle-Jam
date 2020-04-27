@@ -13,6 +13,8 @@ public class MagnetController : MonoBehaviour
     private MagnetState magnetState;
     public LayerMask magneticLayer;
 
+    public bool snapWhenMagnet;
+
     private SpriteRenderer sr;
     public RaycastHit2D hit;
 
@@ -35,6 +37,7 @@ public class MagnetController : MonoBehaviour
         magnetState = MagnetState.Off;
     }
 
+    GameObject lasthit = null; //last magnetizable object
     void FixedUpdate()
     {
         // Moving the arm.
@@ -57,7 +60,7 @@ public class MagnetController : MonoBehaviour
             case MagnetState.On:
                 hit = Physics2D.CircleCast(tip.position, 1, relPos, magnetStrength, magneticLayer);
                 if (hit && hit.rigidbody.gameObject.GetComponent<BlockController>().blockProperty != BlockController.BlockProperty.Stuck)
-                {
+                {    
                     //magnetState = MagnetState.Pulling;
                     if (hit.distance > threshold)
                     {
@@ -72,6 +75,7 @@ public class MagnetController : MonoBehaviour
                         magnetState = MagnetState.Attached;
                     }
                 }
+              
                 break;
             //case MagnetState.Pulling:
                 //break;
@@ -79,13 +83,31 @@ public class MagnetController : MonoBehaviour
                 //hit.rigidbody.velocity = Vector2.zero;
                 // TODO: Add attached particles to box?
                 attached.transform.parent = transform.parent.transform; // ...just transform?
-                attached.transform.position = tip.position;
+                attached.GetComponent<Rigidbody2D>().gravityScale = 0f; // block have stay float -by feihei
+                //attached.transform.position = tip.position;
+
+                //part of Snap code -by feihei
+                attached.layer = LayerMask.NameToLayer("GrabbedBox"); //there's a lot of prlblem when player able to collide box when it's attached so I make it so it won't - by feihei
+                attached.GetComponent<blockSnap>().snapGrid = null;
+                if (attached.GetComponent<blockSnap>() && snapWhenMagnet)
+                {
+                   
+                   attached.transform.position = new Vector2(attached.transform.position.x, tip.position.y);
+                   attached.GetComponent<blockSnap>().manualSnap(tip.position, attached);
+                                                    
+                }
+                else
+                {
+                    attached.transform.position = tip.position;
+                }
                 break;
-            case MagnetState.Off:
-                if (Input.GetMouseButton(0))
+         
+            case MagnetState.Off:        
+                    if (Input.GetMouseButton(0))
                     magnetState = MagnetState.On;
                 if (attached)
                 {
+                    attached.layer = LayerMask.NameToLayer("Box_Metal");
                     attached.transform.parent = null;
                     attached.GetComponent<Rigidbody2D>().gravityScale = 15f; // reset gravity. Hard coding is smart, yes? :(
                 }
