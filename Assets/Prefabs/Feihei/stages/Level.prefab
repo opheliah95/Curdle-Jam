@@ -434,9 +434,11 @@ GameObject:
   - component: {fileID: 3597005722659342178}
   - component: {fileID: 3597005722659342179}
   - component: {fileID: 3597005722659342176}
+  - component: {fileID: 1021870102569066005}
+  - component: {fileID: 6495789642359643060}
   m_Layer: 0
   m_Name: rightPiston
-  m_TagString: Untagged
+  m_TagString: Piston
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -874,6 +876,41 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!50 &1021870102569066005
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3597005722659342182}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 6
+--- !u!114 &6495789642359643060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3597005722659342182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775457b8093a8c746bc70529be2ec52c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLeftPiston: 0
+  isCrushing: 0
 --- !u!1 &3597005723102656361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2432,9 +2469,11 @@ GameObject:
   - component: {fileID: 3597005723747103354}
   - component: {fileID: 3597005723747103355}
   - component: {fileID: 3597005723747103352}
+  - component: {fileID: 1255097675633005378}
+  - component: {fileID: 3878351329839147196}
   m_Layer: 0
   m_Name: LeftPiston
-  m_TagString: Untagged
+  m_TagString: Piston
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2830,6 +2869,41 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!50 &1255097675633005378
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3597005723747103358}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 6
+--- !u!114 &3878351329839147196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3597005723747103358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775457b8093a8c746bc70529be2ec52c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLeftPiston: 1
+  isCrushing: 0
 --- !u!1 &3767604860087412460
 GameObject:
   m_ObjectHideFlags: 0
@@ -2870,6 +2944,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5716233654228866117}
   - component: {fileID: 481990023157753021}
+  - component: {fileID: 5300361231840834080}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -2908,3 +2983,19 @@ MonoBehaviour:
   bottomMark: {fileID: 6367994625111054326}
   platform: {fileID: 3597005722245360531}
   levelHeight: 6
+--- !u!114 &5300361231840834080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3967591725194382757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42b320951cc1e1f4a83c610fd06e7975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftPiston: {fileID: 3597005723747103358}
+  rightPiston: {fileID: 3597005722659342182}
+  maxTime: 5
+  timer: 0
