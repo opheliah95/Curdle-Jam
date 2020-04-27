@@ -9,6 +9,8 @@ public class BlockController : MonoBehaviour
     public BlockProperty blockProperty;
     public bool makeKinematic;
 
+    public LayerMask orgLayer;
+
     public enum BlockProperty
     {
         Default,
@@ -19,6 +21,7 @@ public class BlockController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         //gameObject.layer; // Already exists, also probably not useful?
         rb = GetComponent<Rigidbody2D>();
         //fallSpeed = 10.0f;
@@ -27,8 +30,11 @@ public class BlockController : MonoBehaviour
     }
 
     // Update is called once per frame
+
     void FixedUpdate()
     {
+
+
         //rb.velocity = new Vector3(0, -fallSpeed * Time.deltaTime, 0);
 
         // This is only necessary in collisions...
@@ -51,6 +57,11 @@ public class BlockController : MonoBehaviour
                 GetComponent<SpriteRenderer>().color = Color.magenta;
                 break;
         }
+
+
+
+
+
     }
 
     // TODO: Should stickiness be a separate script? It does work differently from box to player, but still...
@@ -93,7 +104,14 @@ public class BlockController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+<<<<<<< HEAD
         if (blockProperty == BlockProperty.Sticky || blockProperty == BlockProperty.Stuck)
+=======
+
+
+        if (other.gameObject.GetComponent<BlockController>()
+            && (blockProperty == BlockProperty.Sticky || blockProperty == BlockProperty.Stuck))
+>>>>>>> BlockSnap
         {
             if (other.gameObject.GetComponent<BlockController>())
             //&& (blockProperty == BlockProperty.Sticky || blockProperty == BlockProperty.Stuck))
@@ -122,6 +140,6 @@ public class BlockController : MonoBehaviour
                 other.gameObject.GetComponent<PlayerControllerForce>().Sticky();
             }
         }
-        
+
     }
 }
