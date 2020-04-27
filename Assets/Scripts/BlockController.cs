@@ -23,6 +23,7 @@ public class BlockController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         //fallSpeed = 10.0f;
         rb.gravityScale = 15.0f;
+        makeKinematic = true;
     }
 
     // Update is called once per frame
@@ -30,10 +31,13 @@ public class BlockController : MonoBehaviour
     {
         //rb.velocity = new Vector3(0, -fallSpeed * Time.deltaTime, 0);
 
+        // This is only necessary in collisions...
         switch (blockProperty)
         {
             case BlockProperty.Default:
                 // Regular physics. If not attached, fall. If attached, don't.
+                // Debug
+                GetComponent<SpriteRenderer>().color = Color.white;
                 break;
             case BlockProperty.Sticky:
                 // Stick to other blocks
@@ -49,8 +53,26 @@ public class BlockController : MonoBehaviour
         }
     }
 
+    // TODO: Should stickiness be a separate script? It does work differently from box to player, but still...
     void StickTo(GameObject other)
     {
+        SetState(BlockProperty.Stuck);
+        other.GetComponent<BlockController>().SetState(BlockProperty.Stuck);
+        // TODO: If stuck and on magnet, also detach.
+
+        if (makeKinematic)
+        {
+            // Freeze; kinematic
+            rb.isKinematic = true;
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0;
+        }
+        else
+        {
+            // Join; adds a joint to tie them together instead.
+            FixedJoint2D joint = gameObject.AddComponent<FixedJoint2D>();
+            joint.connectedBody = other.GetComponent<Rigidbody2D>();
+        }
 
     }
 
@@ -75,20 +97,10 @@ public class BlockController : MonoBehaviour
             && (blockProperty == BlockProperty.Sticky || blockProperty == BlockProperty.Stuck))
         {
             // Other blocks, wood or metal
-            SetState(BlockProperty.Stuck);
-            other.gameObject.GetComponent<BlockController>().SetState(BlockProperty.Stuck);
-            if (makeKinematic)
-            {
-                // Freeze; kinematic
-                rb.isKinematic = true;
-                rb.velocity = Vector2.zero;
-                rb.angularVelocity = 0;
-            }
-            else
-            {
-                // Join; adds a joint to tie them together instead.
-                gameObject.AddComponent<FixedJoint2D>();
-            }
+            StickTo(other.gameObject);
+            //SetState(BlockProperty.Stuck);
+            //other.gameObject.GetComponent<BlockController>().SetState(BlockProperty.Stuck);
+            
 
         } else if (true)
         {
