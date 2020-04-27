@@ -8,7 +8,8 @@ public class BlockController : MonoBehaviour
     //public float fallSpeed;
     public BlockProperty blockProperty;
     public bool makeKinematic;
-    
+
+    public LayerMask orgLayer;
 
     public enum BlockProperty
     {
@@ -25,6 +26,8 @@ public class BlockController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         //fallSpeed = 10.0f;
         rb.gravityScale = 15.0f;
+
+        orgLayer = gameObject.layer;
     }
 
     // Update is called once per frame

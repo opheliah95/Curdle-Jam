@@ -107,7 +107,7 @@ public class MagnetController : MonoBehaviour
                     magnetState = MagnetState.On;
                 if (attached)
                 {
-                    attached.layer = LayerMask.NameToLayer("Box_Metal");
+                    attached.layer = attached.GetComponent<BlockController>().orgLayer;
                     attached.transform.parent = null;
                     attached.GetComponent<Rigidbody2D>().gravityScale = 15f; // reset gravity. Hard coding is smart, yes? :(
                 }

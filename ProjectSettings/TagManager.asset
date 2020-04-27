@@ -19,8 +19,8 @@ TagManager:
   - Ground
   - Box_Metal
   - GrabbedBox
-  - 
-  - 
+  - Box_Wood
+  - notGround
   - 
   - 
   - 
