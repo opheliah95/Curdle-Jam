@@ -373,6 +373,8 @@ MonoBehaviour:
   preciseMove: 1
   moveHorizontal: 0
   moveVertical: 0
+  armLeft: {x: 0, y: 0, z: 0}
+  armRight: {x: 0, y: 0, z: 0}
 --- !u!1 &1312349935
 GameObject:
   m_ObjectHideFlags: 0
