@@ -513,11 +513,15 @@ MonoBehaviour:
     m_Bits: 1536
   isGrounded: 0
   groundedRadius: 0.2
+  startSpeed: 1000
   moveSpeed: 1000
+  stickyTimer: 2
+  stickySlow: 5
   jumpPower: 30
   preciseMove: 1
   moveHorizontal: 0
   moveVertical: 0
+  stickyState: 0
 --- !u!1 &908208928
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,7 +554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04bd26d0af36e24989440cfaa294b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockProperty: 1
+  blockProperty: 0
   makeKinematic: 0
 --- !u!61 &908208930
 BoxCollider2D:
@@ -806,7 +810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04bd26d0af36e24989440cfaa294b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockProperty: 1
+  blockProperty: 0
   makeKinematic: 0
 --- !u!1 &1525920224
 GameObject:
@@ -1114,7 +1118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04bd26d0af36e24989440cfaa294b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockProperty: 1
+  blockProperty: 0
   makeKinematic: 0
 --- !u!1 &1845840566
 GameObject:

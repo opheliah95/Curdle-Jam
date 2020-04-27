@@ -12,13 +12,24 @@ public class PlayerControllerForce : MonoBehaviour
     public bool isGrounded;
     public float groundedRadius;
 
+    public float startSpeed;
     public float moveSpeed;
+    public float stickyTimer;
+    public float stickySlow;
     public float jumpPower;
     public bool preciseMove;
     // public float airSpeed;
 
     public float moveHorizontal;
     public float moveVertical;
+
+    public StickyState stickyState;
+
+    public enum StickyState
+    {
+        Sticky,
+        Clean
+    }
 
     /*
     public GameObject magnetFist;
@@ -32,10 +43,24 @@ public class PlayerControllerForce : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        moveSpeed = startSpeed;
+        stickyState = StickyState.Clean;
     }
 
     void FixedUpdate()
     {
+        // Stickiness handling
+        switch (stickyState)
+        {
+            case StickyState.Clean:
+                moveSpeed = startSpeed;
+                break;
+            case StickyState.Sticky:
+                moveSpeed = startSpeed / stickySlow;
+                Invoke("Clean", stickyTimer);
+                break;
+        }
+
         // Grounded check
         bool wasGrounded = isGrounded;
         isGrounded = false;
@@ -119,6 +144,15 @@ public class PlayerControllerForce : MonoBehaviour
         rb.AddForce(new Vector2(0, moveVertical), ForceMode2D.Impulse);
     }
 
+    public void Sticky()
+    {
+        stickyState = StickyState.Sticky;
+    }
+
+    public void Clean()
+    {
+        stickyState = StickyState.Clean;
+    }
 
     /*
     private void OnCollisionEnter2D(Collision2D collision)
