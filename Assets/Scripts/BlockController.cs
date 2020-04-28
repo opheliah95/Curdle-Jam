@@ -139,9 +139,9 @@ public class BlockController : MonoBehaviour
 
     private void OnDestroy()
     {
-        if(Time.timeSinceLevelLoad != 0)
+        if (Time.timeSinceLevelLoad != 0)
         {
-            if(gameObject.tag != "Strawberry")
+            if (gameObject.tag != "Strawberry")
             {
                 GameObject parti = Resources.Load("Particle/Explode Dirt") as GameObject;
                 GameObject obj = Instantiate(parti);
@@ -152,8 +152,8 @@ public class BlockController : MonoBehaviour
                 Debug.Log("explosion...");
                 gameObject.GetComponent<Animator>().SetTrigger("Explode");
             }
-            
+
         }
-      
+
     }
 }

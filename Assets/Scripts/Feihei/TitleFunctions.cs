@@ -10,18 +10,19 @@ public class TitleFunctions : MonoBehaviour
 
     Coroutine transitioningOverlay = null;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //curEvent = StartCoroutine(Event1());
         transition.gameObject.SetActive(true);
         transition.material.SetFloat("_Cutoff", 0);
-        transitioningOverlay = transition.StartCoroutine(TransitioningOverlay(true, 2, t1));
+        transition.StartCoroutine(TransitioningOverlay(true, 2, t1));
     }
 
     // Update is called once per frame
 
     public void startGame()
     {
+        AudioManager.playSound("Menu_Sound_01");
         starting = StartCoroutine(startingGame());
     }
     Coroutine starting = null;

@@ -116,7 +116,7 @@ public class IntroEvent : MonoBehaviour
 
 
         //to next Scene
-        SceneManager.LoadScene("LevelTestFeihei");
+        SceneManager.LoadScene("Level_Final");
         curEvent = null;
     }
 

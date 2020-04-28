@@ -17,6 +17,7 @@ public class SimpleUI : MonoBehaviour
 
     void Start()
     {
+        transitioningOverlay = null;
         transition.gameObject.SetActive(true);
         transition.material.SetFloat("_Cutoff", 0);
 

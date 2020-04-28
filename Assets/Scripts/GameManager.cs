@@ -8,16 +8,22 @@ public class GameManager : MonoBehaviour
 {
     public Canvas canvas;
     public string sceneName;
+    GameObject player;
 
-   
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").gameObject;
+    }
+
     public void GameOver()
     {
-        Time.timeScale = 0;
+        Destroy(player);
         canvas.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public void Restart()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
     }
 }

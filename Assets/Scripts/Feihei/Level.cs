@@ -23,20 +23,24 @@ public class Level : MonoBehaviour
     {
         if (!cleared)
         {
-            if (player.transform.position.y > bottomMark.position.y)
+            if(player != null)
             {
-                if(LevelBuilder.levels > 0)
+                if (player.transform.position.y > bottomMark.position.y)
                 {
-                    LevelBuilder.score += 100;
+                    if (LevelBuilder.levels > 0)
+                    {
+                        LevelBuilder.score += 100;
+                    }
+
+                    AudioManager.playSound("PickUp");
+                    LevelBuilder.GetLevel(this.gameObject);
+                    print("clear");
+                    platform.layer = LayerMask.NameToLayer("Default");
+                    LevelBuilder.clearLevel = true;
+                    cleared = true;
                 }
-   
-                AudioManager.playSound("PickUp");
-                LevelBuilder.GetLevel(this.gameObject);
-                print("clear");
-                platform.layer = LayerMask.NameToLayer("Default");
-                LevelBuilder.clearLevel = true;
-                cleared = true;
             }
+           
         }
        
     }
