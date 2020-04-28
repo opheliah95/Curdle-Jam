@@ -330,6 +330,7 @@ MonoBehaviour:
   maxX: -8.5
   minX: 8.5
   timeCooldown: 1
+  curTimeCooldown: 0
   objToSpawn:
   - {fileID: 2299891383625496795, guid: 8e1d6f20f96ba5544945f1466c17764d, type: 3}
   - {fileID: 3221318887531059928, guid: c101d3f7feebc3648bf3cfba3e70e6ea, type: 3}
@@ -383,7 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelText: {fileID: 893920395}
   scoreText: {fileID: 1280792842}
-  timer: {fileID: 0}
+  timeText: {fileID: 1031762928}
   transition: {fileID: 1820710340}
   t1: {fileID: 2800000, guid: 39a255a892e220646b9505939431b86e, type: 3}
 --- !u!1 &92925589
@@ -1277,11 +1278,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 932b074933bb4004db52d113024fb654, type: 3}
-    m_FontSize: 36
+    m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 48
+    m_MinSize: 0
+    m_MaxSize: 56
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1966,7 +1967,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 821.76, y: -466.08}
+  m_AnchoredPosition: {x: 821.76, y: -448}
   m_SizeDelta: {x: 246.5415, y: 59.8338}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1031762928
@@ -1990,11 +1991,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 932b074933bb4004db52d113024fb654, type: 3}
-    m_FontSize: 28
+    m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 48
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2099,7 +2100,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 932b074933bb4004db52d113024fb654, type: 3}
-    m_FontSize: 28
+    m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -2205,7 +2206,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Click On Metal object to magnetize it and use Them to make stair! hurry
-    before The pistons will crush you!
+    before The pistons starts crushing you!
 --- !u!222 &1300798299
 CanvasRenderer:
   m_ObjectHideFlags: 0
