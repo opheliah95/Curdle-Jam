@@ -7,27 +7,41 @@ public class SimpleUI : MonoBehaviour
 {
     public Text levelText;
     public Text scoreText;
-    public Text timer;
+    public Text timeText;
 
 
-    public Image transition;
-    public Texture2D t1;
+
+    public Image transition; //image you want to use for transition effect
+    public Texture2D t1; //this is a bit abstract i'll explain in the next picture
     Coroutine transitioningOverlay = null;
-    // Start is called before the first frame update
+
     void Start()
     {
         transition.gameObject.SetActive(true);
-        //curEvent = StartCoroutine(Event1());
         transition.material.SetFloat("_Cutoff", 0);
+
         transitioningOverlay = transition.StartCoroutine(TransitioningOverlay(true, 2, t1));
     }
 
-    // Update is called once per frame
+
     void Update()
     {
+        if(LevelBuilder.curLevel.GetComponent<PistonManager>().timeLeft < 0)
+        {
+            timeText.text = "0";
+        }
+        else
+        {
+            timeText.text = LevelBuilder.curLevel.GetComponent<PistonManager>().timeLeft.ToString();
+        }
+     
+        
         levelText.text = LevelBuilder.levels.ToString();
         scoreText.text = LevelBuilder.score.ToString();
     }
+
+    
+    //You need to use this Corutine 
     IEnumerator TransitioningOverlay(bool show, float speed, Texture2D transitionEffect)
     {
         float targVal = show ? 1 : 0;

@@ -11,6 +11,8 @@ public class PistonManager : MonoBehaviour
     public float timer;
     public float speed = 1;
 
+    public float timeLeft;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,11 @@ public class PistonManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    
+        timeLeft = Mathf.Round(maxTime - timer);
+        
+
+
         if(GetComponent<Level>().floorCount == LevelBuilder.levels)
             timer += Time.deltaTime;
 

@@ -16,7 +16,7 @@ public class test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            AudioManager.playSound("Hit_01"); //You can call a sound just by using the file name. can be call anywhere
+            AudioManager.playSound("Hit_01"); //You can call a sound just by using the file name. can be call anywhere : AudioManager.playSound(SoundName,volume);
         }
 
         if (Input.GetKeyDown(KeyCode.C))
