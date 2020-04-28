@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3221318887531059930}
   - component: {fileID: 3221318887531059929}
   - component: {fileID: 3221318887531059934}
+  - component: {fileID: 1835642890332773986}
   m_Layer: 12
   m_Name: placeholder_woodbox
   m_TagString: Untagged
@@ -163,3 +164,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808c2ccdf27b07c488ac2358d574298b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1835642890332773986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3221318887531059928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9888ab3e37d0f9458d910e72b2ae99b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 744652762311877619, guid: d3f3697dc010d0c4f9e638eac89f5dd2, type: 3}
+  - {fileID: -1874541302562349115, guid: d3f3697dc010d0c4f9e638eac89f5dd2, type: 3}
+  - {fileID: 2289450610876112375, guid: d3f3697dc010d0c4f9e638eac89f5dd2, type: 3}
+  - {fileID: 5231149003460699772, guid: d3f3697dc010d0c4f9e638eac89f5dd2, type: 3}
