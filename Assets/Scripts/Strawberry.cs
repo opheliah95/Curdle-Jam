@@ -27,11 +27,6 @@ public class Strawberry : MonoBehaviour
     {
         GameObject obj = collision.gameObject;
 
-        if(obj.layer != 13)
-        {
-            gameObject.GetComponent<Rigidbody2D>().isKinematic = true; // when hit ground berry cannot be pushed
-        }
-
         if(obj.tag == "Player")
         {
             anim.SetTrigger("Explode");

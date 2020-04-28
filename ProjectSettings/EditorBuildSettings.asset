@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LevelTestFeihei.unity
-    guid: f1d85b7b4cc543e46bcc263e1a80a72f
+    path: Assets/Scenes/TitleScreen.unity
+    guid: 8d5ffa6f8d4cc4b4a8e9b09ecd707aa1
   - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: ee7309b8f2e8e144da8809ef03229624
+  - enabled: 1
+    path: Assets/Scenes/Level_Final.unity
+    guid: 5157936112c4f2540b40811b730ad7eb
   m_configObjects: {}

@@ -55,7 +55,11 @@ public class PistonManager : MonoBehaviour
     // change the priston layers
     void changeLayer()
     {
-        leftPiston.GetComponent<SpriteRenderer>().sortingLayerName = "Piston";
-        rightPiston.GetComponent<SpriteRenderer>().sortingLayerName = "Piston";
+        if(leftPiston.GetComponent<SpriteRenderer>() != null)
+        {
+            leftPiston.GetComponent<SpriteRenderer>().sortingLayerName = "Piston";
+            rightPiston.GetComponent<SpriteRenderer>().sortingLayerName = "Piston";
+        }
+        
     }
 }

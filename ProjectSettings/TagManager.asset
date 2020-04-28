@@ -8,6 +8,8 @@ TagManager:
   - TimeController
   - Piston
   - Strawberry
+  - Box
+  - Game
   layers:
   - Default
   - TransparentFX
@@ -44,4 +46,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Strawberry
+    uniqueID: 2397091713
+    locked: 0
+  - name: Piston
+    uniqueID: 937842807
     locked: 0
