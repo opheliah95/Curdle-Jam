@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AlphaTex:
-        m_Texture: {fileID: 2800000, guid: 182baf14c52fb014b908b400ce7bed28, type: 3}
+        m_Texture: {fileID: 2800000, guid: 39a255a892e220646b9505939431b86e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -61,8 +61,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
-    - _Cutoff: 0
-    - _CutoffRange: 0.173
+    - _Cutoff: 1
+    - _CutoffRange: 0.431
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1

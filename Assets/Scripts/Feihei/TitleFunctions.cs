@@ -1,29 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
-public class SimpleUI : MonoBehaviour
+public class TitleFunctions : MonoBehaviour
 {
-    public Text levelText;
-
     public Image transition;
     public Texture2D t1;
+
     Coroutine transitioningOverlay = null;
     // Start is called before the first frame update
     void Start()
     {
-        transition.gameObject.SetActive(true);
         //curEvent = StartCoroutine(Event1());
+        transition.gameObject.SetActive(true);
         transition.material.SetFloat("_Cutoff", 0);
         transitioningOverlay = transition.StartCoroutine(TransitioningOverlay(true, 2, t1));
     }
 
     // Update is called once per frame
-    void Update()
+
+    public void startGame()
     {
-        levelText.text = LevelBuilder.levels.ToString();
+        starting = StartCoroutine(startingGame());
     }
+    Coroutine starting = null;
+    IEnumerator startingGame()
+    {
+        transitioningOverlay = transition.StartCoroutine(TransitioningOverlay(false, 2, t1));
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("Intro");
+    }
+
     IEnumerator TransitioningOverlay(bool show, float speed, Texture2D transitionEffect)
     {
         float targVal = show ? 1 : 0;
@@ -38,5 +46,4 @@ public class SimpleUI : MonoBehaviour
 
         transitioningOverlay = null;
     }
-
 }

@@ -34,6 +34,7 @@ public class AudioManager
         audiosourcel.name = "soundplayerloop";
         audiosourcel.loop = true;
         audiosourcel.clip = sfxl;
+        audiosourcel.volume = vol;
         audiosourcel.Play();
         yield return new WaitForSeconds(duration);
         audiosourcel.Stop();

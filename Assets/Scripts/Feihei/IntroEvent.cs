@@ -39,7 +39,7 @@ public class IntroEvent : MonoBehaviour
         cam1.enabled = true;
         cam2.enabled = false;
 
-        StartCoroutine(AudioManager.loopSound("Magnetic_01",4));
+        StartCoroutine(AudioManager.loopSound("Magnetic_01",4,0.5f));
  
         bool done = false;
         float time = 0;
