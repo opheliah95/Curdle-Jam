@@ -6,7 +6,8 @@ public class LevelBuilder : MonoBehaviour
 {
     bool firstlevel = true;
     public static bool clearLevel;
-    public Camera cam;
+    public GameObject camHolder;
+    public GameObject cam;
     float curHeight;
     public static int levels;
     public int levelCount;
@@ -49,6 +50,7 @@ public class LevelBuilder : MonoBehaviour
             print("cl");
             levels += 1;
             buildNextLevel();
+            moveCam = StartCoroutine(moveCamera());
             clearLevel = false;
         }
 
@@ -58,6 +60,9 @@ public class LevelBuilder : MonoBehaviour
             allLevels.RemoveAt(0);
             Destroy(toDestroy);
         }
+
+
+    
     }
 
     public static GameObject curLevel;
@@ -69,7 +74,7 @@ public class LevelBuilder : MonoBehaviour
     {
         //curLevel.GetComponent<>
        
-        moveCam = StartCoroutine(moveCamera());
+
        
         curHeight += curlevelHeight;
         GameObject lv = Instantiate(levelobj[Random.Range(0,levelobj.Length)]);
@@ -88,9 +93,9 @@ public class LevelBuilder : MonoBehaviour
 
         while (move)
         {
-            cam.transform.position = Vector3.MoveTowards(cam.transform.position, new Vector3(cam.transform.position.x, curLevel.transform.position.y, cam.transform.position.z), 0.1f);
+            camHolder.transform.position = Vector3.MoveTowards(camHolder.transform.position, new Vector3(camHolder.transform.position.x, curLevel.transform.position.y, camHolder.transform.position.z), 0.1f);
 
-            if(cam.transform.position.y >= curHeight)
+            if(camHolder.transform.position.y >= curHeight)
             {
                 move = false;
             }

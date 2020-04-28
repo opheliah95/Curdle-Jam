@@ -14,6 +14,9 @@ public class IntroEvent : MonoBehaviour
     public Image transition;
     public GameObject garbageDischarge;
     public GameObject garbageobjects;
+    public GameObject boxmetal;
+    public GameObject boxwood;
+
     Coroutine curEvent;
     // Start is called before the first frame update
     void Start()
@@ -32,17 +35,20 @@ public class IntroEvent : MonoBehaviour
    
     IEnumerator Event1()
     {
-
+        //Why tf don't I just use WaitForSeconds lol - by feihei
         cam1.enabled = true;
         cam2.enabled = false;
 
+        StartCoroutine(AudioManager.loopSound("Magnetic_01",4));
+ 
         bool done = false;
         float time = 0;
         while (!done)
         {
             time += Time.deltaTime;
-            print("1");
-            if(time >= 2)
+          
+            //print("1");
+            if (time >= 2)
             {
                 done = true;
             }
@@ -52,12 +58,23 @@ public class IntroEvent : MonoBehaviour
         done = false;
         time = 0;
         GameObject bear = Instantiate(garbageobjects);
+        GameObject box1 = Instantiate(boxmetal);
+        GameObject box2 = Instantiate(boxwood);
+
+        box1.transform.position = garbageDischarge.transform.position;
+        box1.GetComponent<Rigidbody2D>().velocity = new Vector2(-1, 0) * 9;
+        
+
+        box2.transform.position = garbageDischarge.transform.position;
+        box2.GetComponent<Rigidbody2D>().velocity = new Vector2(-1, 0) * 10.5f;
+
+        AudioManager.playSound("Thud_01");
         bear.transform.position = garbageDischarge.transform.position;
         bear.GetComponent<Rigidbody2D>().velocity = new Vector2(-1,0) * 10;
 
         while (!done)
         {
-            print("2");
+            //print("2");
             time += Time.deltaTime;
 
             if (time >= 1.5)
@@ -76,13 +93,13 @@ public class IntroEvent : MonoBehaviour
         cam1.enabled = false;
         transitioningOverlay = transition.StartCoroutine(TransitioningOverlay(true, 2,t1));
 
-
+        AudioManager.playSound("Wind");
         done = false;
         time = 0;
 
         while (!done)
         {
-            print("2");
+            //print("2");
             time += Time.deltaTime;
 
             if (time >= 3)
