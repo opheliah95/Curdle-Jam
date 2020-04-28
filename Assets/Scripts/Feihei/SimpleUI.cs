@@ -7,7 +7,8 @@ public class SimpleUI : MonoBehaviour
 {
     public Text levelText;
     public Text scoreText;
-    public Text timer;
+    public Text timeText;
+
 
 
     public Image transition; //image you want to use for transition effect
@@ -25,6 +26,16 @@ public class SimpleUI : MonoBehaviour
 
     void Update()
     {
+        if(LevelBuilder.curLevel.GetComponent<PistonManager>().timeLeft < 0)
+        {
+            timeText.text = "0";
+        }
+        else
+        {
+            timeText.text = LevelBuilder.curLevel.GetComponent<PistonManager>().timeLeft.ToString();
+        }
+     
+        
         levelText.text = LevelBuilder.levels.ToString();
         scoreText.text = LevelBuilder.score.ToString();
     }
