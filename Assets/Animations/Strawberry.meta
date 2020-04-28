@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Animations/Strawberry.meta
 guid: 294af8a65b9dc8e44aac31f560559171
 folderAsset: yes
+=======
+guid: ed266e8d1dc69244992770afe75394b0
+>>>>>>> Dullios:Assets/Scenes/LevelWithDeathScreen.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
