@@ -7,6 +7,7 @@ TagManager:
   - ground
   - TimeController
   - Piston
+  - Strawberry
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - GrabbedBox
   - Box_Wood
   - notGround
-  - 
+  - Strawberry
   - 
   - 
   - 

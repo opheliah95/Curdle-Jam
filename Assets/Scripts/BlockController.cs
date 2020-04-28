@@ -34,7 +34,7 @@ public class BlockController : MonoBehaviour
 
         makeKinematic = true;
 
-        orgLayer = gameObject.layer;
+       //orgLayer = gameObject.layer;
 
     }
 
@@ -141,9 +141,13 @@ public class BlockController : MonoBehaviour
     {
         if(Time.timeSinceLevelLoad != 0)
         {
-            GameObject parti = Resources.Load("Particle/Explode Dirt") as GameObject;
-            GameObject obj = Instantiate(parti);
-            obj.transform.position = transform.position;
+            if(gameObject.tag != "Strawberry")
+            {
+                GameObject parti = Resources.Load("Particle/Explode Dirt") as GameObject;
+                GameObject obj = Instantiate(parti);
+                obj.transform.position = transform.position;
+            }
+            
         }
       
     }
