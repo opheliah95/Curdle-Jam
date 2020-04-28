@@ -12,7 +12,10 @@ public class PlayerControllerForce : MonoBehaviour
     public bool isGrounded;
     public float groundedRadius;
 
+    public float startSpeed = 500f;
     public float moveSpeed;
+    public float stickyTimer;
+    public float stickySlow;
     public float jumpPower;
     public bool preciseMove;
     // public float airSpeed;
@@ -31,10 +34,20 @@ public class PlayerControllerForce : MonoBehaviour
     public float magnetStrength;
     */
 
+    public StickyState stickyState;
+
+    public enum StickyState
+    {
+        Sticky,
+        Clean
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        moveSpeed = startSpeed;
+        stickyState = StickyState.Clean;
     }
 
     void FixedUpdate()
@@ -131,6 +144,15 @@ public class PlayerControllerForce : MonoBehaviour
         rb.AddForce(new Vector2(0, moveVertical), ForceMode2D.Impulse);
     }
 
+    public void Sticky()
+    {
+        stickyState = StickyState.Sticky;
+    }
+
+    public void Clean()
+    {
+        stickyState = StickyState.Clean;
+    }
 
     /*
     private void OnCollisionEnter2D(Collision2D collision)

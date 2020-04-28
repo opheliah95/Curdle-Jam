@@ -27,7 +27,13 @@ public class BlockController : MonoBehaviour
         //fallSpeed = 10.0f;
         rb.gravityScale = 15.0f;
 
+
         orgLayer = gameObject.layer;
+
+        makeKinematic = true;
+
+        orgLayer = gameObject.layer;
+
     }
 
     // Update is called once per frame
@@ -86,10 +92,14 @@ public class BlockController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        
+
      
         if (other.gameObject.GetComponent<BlockController>()
             && (blockProperty == BlockProperty.Sticky || blockProperty == BlockProperty.Stuck))
+
+
+        if (blockProperty == BlockProperty.Sticky || blockProperty == BlockProperty.Stuck)
+
         {
             // Other blocks, wood or metal
             SetState(BlockProperty.Stuck);
