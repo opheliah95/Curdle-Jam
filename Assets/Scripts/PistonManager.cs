@@ -19,7 +19,8 @@ public class PistonManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        if(GetComponent<Level>().floorCount == LevelBuilder.levels)
+            timer += Time.deltaTime;
 
         if (timer >= maxTime)
         {

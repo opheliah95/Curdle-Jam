@@ -9,6 +9,7 @@ public class LevelBuilder : MonoBehaviour
     public Camera cam;
     float curHeight;
     public static int levels;
+    public int levelCount;
     List<GameObject> allLevels = new List<GameObject>();
 
     public GameObject[] levelobj;
@@ -28,6 +29,7 @@ public class LevelBuilder : MonoBehaviour
         curLevel = null;
         firstlevel = true;
         levels = 0;
+        levelCount = 1;
         //curHeight = -6;
         buildNextLevel();
         buildNextLevel();
@@ -71,6 +73,8 @@ public class LevelBuilder : MonoBehaviour
        
         curHeight += curlevelHeight;
         GameObject lv = Instantiate(levelobj[Random.Range(0,levelobj.Length)]);
+        lv.gameObject.GetComponent<Level>().floorCount = levelCount;
+        levelCount++;
         curHighestLevel = lv;
         curlevelHeight = curHighestLevel.GetComponent<Level>().levelHeight;
         lv.transform.position = new Vector2(0,curHeight);
