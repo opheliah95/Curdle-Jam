@@ -142,6 +142,7 @@ public class BlockController : MonoBehaviour
         if(Time.timeSinceLevelLoad != 0)
         {
             GameObject parti = Resources.Load("Particle/Explode Dirt") as GameObject;
+            AudioManager.playSound("Hit_01",0.2f);
             GameObject obj = Instantiate(parti);
             obj.transform.position = transform.position;
         }

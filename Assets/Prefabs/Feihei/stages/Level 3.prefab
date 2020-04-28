@@ -5702,9 +5702,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftPiston: {fileID: 3597005723747103358}
   rightPiston: {fileID: 3597005722659342182}
-  maxTime: 40
+  maxTime: 10
   timer: 0
-  speed: 0.2
+  speed: 0.5
 --- !u!1 &8374237365592113011
 GameObject:
   m_ObjectHideFlags: 0
