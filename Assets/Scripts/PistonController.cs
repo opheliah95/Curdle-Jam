@@ -32,19 +32,22 @@ public class PistonController : MonoBehaviour
             {
                 GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
                 doneCrushing = true;
+                isCrushing = false;
             }
               
-         
+
         }
         else
         {
             if (transform.localPosition.x <= -9.25)
             {
                 GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+
                 doneCrushing = true;
+
+                isCrushing = false;
             }
           
-       
 
         }
     }
