@@ -9,6 +9,8 @@ public class Level : MonoBehaviour
 
     public float levelHeight;
 
+    public int floorCount;
+
     bool cleared;
     GameObject player;
     void Start()
