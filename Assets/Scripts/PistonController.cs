@@ -14,14 +14,6 @@ public class PistonController : MonoBehaviour
         
     }
 
-    private void Update()
-    {
-        if(doneCrushing)
-        {
-            GameObject.FindWithTag("Game").GetComponent<GameManager>().GameOver();
-        }
-    }
-
 
     // Update is called once per frame
     void FixedUpdate()

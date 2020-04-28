@@ -26,6 +26,7 @@ public class SimpleUI : MonoBehaviour
 
     void Update()
     {
+      
         if(LevelBuilder.curLevel.GetComponent<PistonManager>().timeLeft < 0)
         {
             timeText.text = "0";

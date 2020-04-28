@@ -3504,7 +3504,7 @@ MonoBehaviour:
   moveVertical: 0
   armLeft: {x: -0.282, y: -0.095, z: 0}
   armRight: {x: 0.282, y: -0.095, z: 0}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 64907340}
   pistonLeftCollision: 0
   pistonRightCollision: 0
   stickyState: 0
