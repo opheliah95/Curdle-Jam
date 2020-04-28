@@ -19,12 +19,18 @@ public class PistonController : MonoBehaviour
         if (isLeftPiston)
         {
             if (transform.localPosition.x >= 9.25)
+            {
                 GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+                isCrushing = false;
+            }
         }
         else
         {
             if (transform.localPosition.x <= -9.25)
+            {
                 GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+                isCrushing = false;
+            }
         }
     }
 }

@@ -23,6 +23,10 @@ public class PlayerControllerForce : MonoBehaviour
     public Vector3 armLeft;
     public Vector3 armRight;
 
+    public GameObject gameManager;
+    public bool pistonLeftCollision;
+    public bool pistonRightCollision;
+
     /*
     public GameObject magnetFist;
     private Vector3 mousePos;
@@ -129,25 +133,40 @@ public class PlayerControllerForce : MonoBehaviour
             rb.velocity = new Vector2(moveHorizontal, rb.velocity.y);
         }
         rb.AddForce(new Vector2(0, moveVertical), ForceMode2D.Impulse);
+
+        // Die/Gameover
+        if(pistonLeftCollision && pistonRightCollision)
+        {
+            StartCoroutine(GameOverDelay());
+        }
     }
 
+    IEnumerator GameOverDelay()
+    {
+        yield return new WaitForSeconds(0.3f);
 
-    /*
+        gameManager.GetComponent<GameManager>().GameOver();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("ground"))
+        if(collision.gameObject.tag == "Piston")
         {
-            isGrounded = true;
-            anim.SetBool("isJumping", false);
+            if (collision.gameObject.GetComponent<PistonController>().isLeftPiston)
+                pistonLeftCollision = true;
+            else
+                pistonRightCollision = true;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("ground"))
+        if (collision.gameObject.tag == "Piston")
         {
-            isGrounded = false;
+            if (collision.gameObject.GetComponent<PistonController>().isLeftPiston)
+                pistonLeftCollision = false;
+            else
+                pistonRightCollision = false;
         }
     }
-    */
 }
