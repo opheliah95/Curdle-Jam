@@ -16,6 +16,7 @@ public class PistonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        changeLayer();
         float timereduce = ((maxTime * LevelBuilder.levels) / 25);
         if(timereduce <= maxTime/2)
         {
@@ -49,5 +50,12 @@ public class PistonManager : MonoBehaviour
             leftPiston.GetComponent<Rigidbody2D>().velocity = new Vector3(2, 0, 0) * speed;
             rightPiston.GetComponent<Rigidbody2D>().velocity = new Vector3(-2, 0, 0) *  speed;
         }
+    }
+
+    // change the priston layers
+    void changeLayer()
+    {
+        leftPiston.GetComponent<SpriteRenderer>().sortingLayerName = "Piston";
+        rightPiston.GetComponent<SpriteRenderer>().sortingLayerName = "Piston";
     }
 }
