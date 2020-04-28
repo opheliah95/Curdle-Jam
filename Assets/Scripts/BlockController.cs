@@ -10,7 +10,7 @@ public class BlockController : MonoBehaviour
     public bool makeKinematic;
 
     public LayerMask orgLayer;
-
+    
     public enum BlockProperty
     {
         Default,
@@ -53,8 +53,15 @@ public class BlockController : MonoBehaviour
                 GetComponent<SpriteRenderer>().color = Color.magenta;
                 break;
         }
+    }
 
+    IEnumerator delayedDestroy()
+    {
+        yield return new WaitForSeconds(0.5f);
 
+        Destroy(gameObject);
+
+        yield return null;
     }
 
     void StickTo(GameObject other)
@@ -107,6 +114,9 @@ public class BlockController : MonoBehaviour
         {
             // Player
         }
+
+        if(other.gameObject.tag == "Piston" && other.gameObject.GetComponent<PistonController>().isCrushing)
+            StartCoroutine(delayedDestroy());
     }
 
     private void OnBecameInvisible()

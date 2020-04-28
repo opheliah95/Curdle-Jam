@@ -233,6 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 962052370}
+  levelCount: 0
   levelobj:
   - {fileID: 3967591725194382757, guid: 8a36f0896665f694d87dcf8f253ef201, type: 3}
   - {fileID: 3967591725194382757, guid: 59423b578370c4740914a89e46648a3b, type: 3}
@@ -2548,8 +2549,8 @@ MonoBehaviour:
   preciseMove: 1
   moveHorizontal: 0
   moveVertical: 0
-  armLeft: {x: 0, y: 0, z: 0}
-  armRight: {x: 0, y: 0, z: 0}
+  armLeft: {x: -0.282, y: -0.095, z: 0}
+  armRight: {x: 0.282, y: -0.095, z: 0}
 --- !u!50 &1856698966
 Rigidbody2D:
   serializedVersion: 4
