@@ -4,25 +4,42 @@ using UnityEngine;
 
 public class Strawberry : MonoBehaviour
 {
-    GameObject[] blocks;
+    public List<GameObject> blocks;
     public Animator anim;
+
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
     }
 
-    
+    private void Update()
+    {
+        if (blocks.Count >= 2)
+        {
+            Debug.Log("will explide");
+            anim.SetTrigger("Explode");
+        }
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        GameObject obj = collision.gameObject;
+
+        if(obj.tag == "Player")
         {
             anim.SetTrigger("Explode");
         }
 
         // check if they are blocks
-
+        if(obj.tag == "Box")
+        {
+            if(!blocks.Contains(obj)){
+                blocks.Add(obj);
+            }
+        }
     }
 
     public void BerryExplosion()
