@@ -21,8 +21,8 @@ public class test : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            CameraEffect.camshaking = StartCoroutine(CameraEffect.Shake(cam)); //shake effect : Shake(CameraObject,duration,speed,strength) : technically you can use it to shake any object but there might be a problem if the object is moving so main camera in my LevelTestScene now is in the holder -by feihei
-
+            //CameraEffect.camshaking = StartCoroutine(CameraEffect.Shake(cam)); //shake effect : Shake(CameraObject,duration,speed,strength) : technically you can use it to shake any object but there might be a problem if the object is moving so main camera in my LevelTestScene now is in the holder -by feihei
+            EZCameraShake.CameraShaker.Instance.ShakeOnce(1, 4, 1, 1);
 
         }
 

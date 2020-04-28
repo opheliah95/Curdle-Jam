@@ -45,43 +45,8 @@ public class AudioManager
 
 }
 
-public class CameraEffect
-{
-    public static Coroutine camshaking;
-    //static Camera cam;
 
 
-    public static IEnumerator Shake(GameObject cam,float duration = 1f, float speed = 0.05f,float strength = 0.3f)
-    {            
-        bool shaking = true;
-        Vector3 orgPos = cam.transform.position;
-        while(shaking == true)
-        {
-            bool move = true;
 
-            while (move)
-            {
-                Vector3 ToPos = new Vector3(orgPos.x + Random.Range(-strength, strength), orgPos.y + Random.Range(-strength, strength), cam.transform.position.z);
-                cam.transform.position = Vector3.MoveTowards(cam.transform.position, ToPos, 1f);
-                if(cam.transform.position.x == ToPos.x && cam.transform.position.y == ToPos.y)
-                {
-                    move = false;
-                }
-            }
-      
-            duration -= speed;
+    
 
-            if(duration <= 0)
-            {
-                cam.transform.position = orgPos;
-                shaking = false;
-            }
-
-            yield return null;
-        }
-
-        camshaking = null;
-
-
-    }
-}
