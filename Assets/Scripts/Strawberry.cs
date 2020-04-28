@@ -20,6 +20,9 @@ public class Strawberry : MonoBehaviour
         {
             anim.SetTrigger("Explode");
         }
+
+        // check if they are blocks
+
     }
 
     public void BerryExplosion()
