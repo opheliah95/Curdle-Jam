@@ -4346,6 +4346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftPiston: {fileID: 3597005723747103358}
   rightPiston: {fileID: 3597005722659342182}
-  maxTime: 10
+  maxTime: 30
   timer: 0
   speed: 0.5
+  timeLeft: 0

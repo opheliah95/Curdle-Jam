@@ -22,6 +22,8 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         timer += Time.deltaTime;
 
         if(timer >= spawnTime)
@@ -38,5 +40,10 @@ public class Spawner : MonoBehaviour
 
             timer = 0;
         }
+    }
+
+    void checkLevel()
+    {
+        
     }
 }

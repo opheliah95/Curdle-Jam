@@ -4375,7 +4375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftPiston: {fileID: 3597005723747103358}
   rightPiston: {fileID: 3597005722659342182}
-  maxTime: 10
+  maxTime: 30
   timer: 0
   speed: 0.5
   timeLeft: 0
@@ -4394,12 +4394,12 @@ PrefabInstance:
     - target: {fileID: 2466568417704450793, guid: b514355ded9edde4ebbd73ecf8854209,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.5
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 2466568417704450793, guid: b514355ded9edde4ebbd73ecf8854209,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.25
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2466568417704450793, guid: b514355ded9edde4ebbd73ecf8854209,
         type: 3}
@@ -4469,12 +4469,12 @@ PrefabInstance:
     - target: {fileID: 2466568417704450793, guid: b514355ded9edde4ebbd73ecf8854209,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 2466568417704450793, guid: b514355ded9edde4ebbd73ecf8854209,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.25
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2466568417704450793, guid: b514355ded9edde4ebbd73ecf8854209,
         type: 3}

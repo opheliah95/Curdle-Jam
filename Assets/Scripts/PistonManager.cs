@@ -16,7 +16,15 @@ public class PistonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        float timereduce = ((maxTime * LevelBuilder.levels) / 25);
+        if(timereduce <= maxTime/2)
+        {
+            maxTime = maxTime - timereduce;
+        }else if(timereduce > maxTime/2)
+        {
+            maxTime = maxTime/2;
+        }
+
     }
 
     // Update is called once per frame
@@ -25,7 +33,10 @@ public class PistonManager : MonoBehaviour
     
         timeLeft = Mathf.Round(maxTime - timer);
         
-
+        if(timer == 0)
+        {
+            
+        }
 
         if(GetComponent<Level>().floorCount == LevelBuilder.levels)
             timer += Time.deltaTime;

@@ -8,6 +8,7 @@ public class BlockDropper : MonoBehaviour
     public float minX;
 
     public float timeCooldown = 2;
+    public float curTimeCooldown;
 
     public List<GameObject> objToSpawn;
     float time;
@@ -20,6 +21,31 @@ public class BlockDropper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        curTimeCooldown = timeCooldown;
+
+        //that's a lot of else if lol - by feihei
+        if(LevelBuilder.levels >= 5)
+        {
+            curTimeCooldown = timeCooldown - (timeCooldown / 10);
+        }
+        else if (LevelBuilder.levels >= 10)
+        {
+            curTimeCooldown = timeCooldown - (timeCooldown / 9);
+        }
+        else if (LevelBuilder.levels >= 15)
+        {
+            curTimeCooldown = timeCooldown - (timeCooldown / 8);
+        }
+        else if (LevelBuilder.levels >= 20)
+        {
+            curTimeCooldown = timeCooldown - (timeCooldown / 6);
+        }
+        else if (LevelBuilder.levels >= 25)
+        {
+            curTimeCooldown = timeCooldown - (timeCooldown / 5);
+        }
+
+
         time -= Time.deltaTime;
 
         if(time <= 0)
@@ -30,7 +56,7 @@ public class BlockDropper : MonoBehaviour
             {
                 obj.GetComponent<blockSnap>().manualSnap(obj.transform.position,obj);
             }
-            time = timeCooldown;
+            time = curTimeCooldown;
         }
     }
 }
