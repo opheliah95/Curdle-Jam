@@ -21,6 +21,7 @@ public class IntroEvent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transition.gameObject.SetActive(true);
         curEvent = StartCoroutine(Event1());
         transition.material.SetFloat("_Cutoff", 0);
         transitioningOverlay = transition.StartCoroutine(TransitioningOverlay(true, 2,t1));

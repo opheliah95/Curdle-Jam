@@ -19,8 +19,7 @@ public class PistonController : MonoBehaviour
     {
         if (!doneCrushing && isCrushing)
         {
-     
-
+   
         }
         else
         {

@@ -16,7 +16,9 @@ public class LevelBuilder : MonoBehaviour
     public GameObject[] levelobj;
     public GameObject curHighestLevel;
 
-    public float curlevelHeight; 
+    public float curlevelHeight;
+
+    public static float score;
 
     Coroutine moveCam;
     // Start is called before the first frame update
@@ -29,6 +31,7 @@ public class LevelBuilder : MonoBehaviour
         //levels = 1;
         curLevel = null;
         firstlevel = true;
+        score = 0;
         levels = 0;
         levelCount = 1;
         //curHeight = -6;

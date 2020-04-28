@@ -9,6 +9,7 @@ public class PistonManager : MonoBehaviour
 
     public float maxTime;
     public float timer;
+    public float speed = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +28,8 @@ public class PistonManager : MonoBehaviour
             leftPiston.GetComponent<PistonController>().isCrushing = true;
             rightPiston.GetComponent<PistonController>().isCrushing = true;
 
-            leftPiston.GetComponent<Rigidbody2D>().velocity = new Vector3(2, 0, 0);
-            rightPiston.GetComponent<Rigidbody2D>().velocity = new Vector3(-2, 0, 0);
+            leftPiston.GetComponent<Rigidbody2D>().velocity = new Vector3(2, 0, 0) * speed;
+            rightPiston.GetComponent<Rigidbody2D>().velocity = new Vector3(-2, 0, 0) *  speed;
         }
     }
 }

@@ -10,6 +10,7 @@ public class BlockController : MonoBehaviour
     public bool makeKinematic;
 
     public LayerMask orgLayer;
+    public float orgGravity = 15f;
     
     public enum BlockProperty
     {
@@ -25,7 +26,8 @@ public class BlockController : MonoBehaviour
         //gameObject.layer; // Already exists, also probably not useful?
         rb = GetComponent<Rigidbody2D>();
         //fallSpeed = 10.0f;
-        rb.gravityScale = 15.0f;
+        orgGravity = rb.gravityScale;
+        //rb.gravityScale = 15.0f;
 
         orgLayer = gameObject.layer;
     }
@@ -122,5 +124,17 @@ public class BlockController : MonoBehaviour
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
+    }
+
+
+    private void OnDestroy()
+    {
+        if(Time.timeSinceLevelLoad != 0)
+        {
+            GameObject parti = Resources.Load("Particle/Explode Dirt") as GameObject;
+            GameObject obj = Instantiate(parti);
+            obj.transform.position = transform.position;
+        }
+      
     }
 }
