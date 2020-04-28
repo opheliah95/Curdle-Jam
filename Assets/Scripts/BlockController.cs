@@ -147,6 +147,11 @@ public class BlockController : MonoBehaviour
                 GameObject obj = Instantiate(parti);
                 obj.transform.position = transform.position;
             }
+            else
+            {
+                Debug.Log("explosion...");
+                gameObject.GetComponent<Animator>().SetTrigger("Explode");
+            }
             
         }
       
