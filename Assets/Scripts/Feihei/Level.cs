@@ -25,6 +25,12 @@ public class Level : MonoBehaviour
         {
             if (player.transform.position.y > bottomMark.position.y)
             {
+                if(LevelBuilder.levels > 0)
+                {
+                    LevelBuilder.score += 100;
+                }
+   
+                AudioManager.playSound("PickUp");
                 LevelBuilder.GetLevel(this.gameObject);
                 print("clear");
                 platform.layer = LayerMask.NameToLayer("Default");

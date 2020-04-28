@@ -17,10 +17,10 @@ public class AudioManager
         {
             audiosource = new GameObject().AddComponent<AudioSource>();
             audiosource.name = "soundplayer";
-        }    
-             
-            audiosource.PlayOneShot(sfx);
-            audiosource.volume = vol;            
+        }
+        audiosource.volume = vol;
+        audiosource.PlayOneShot(sfx);
+                
     }
 
 

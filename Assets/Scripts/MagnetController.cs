@@ -109,7 +109,7 @@ public class MagnetController : MonoBehaviour
                 {
                     attached.layer = attached.GetComponent<BlockController>().orgLayer;
                     attached.transform.parent = null;
-                    attached.GetComponent<Rigidbody2D>().gravityScale = 15f; // reset gravity. Hard coding is smart, yes? :(
+                    attached.GetComponent<Rigidbody2D>().gravityScale = attached.GetComponent<BlockController>().orgGravity; // reset gravity. Hard coding is smart, yes? :(
                 }
                 break;
         }

@@ -97,6 +97,7 @@ public class PlayerControllerForce : MonoBehaviour
         // Jumping
         if (isGrounded && Input.GetAxisRaw("Vertical") > 0)
         {
+            AudioManager.playSound("Jump01",0.5f);
             rb.velocity = new Vector2(rb.velocity.x, 0);  // Reset vert movement so there's no carry-over
             moveVertical = jumpPower;
             anim.SetBool("Jumping", true);

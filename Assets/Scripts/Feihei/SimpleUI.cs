@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class SimpleUI : MonoBehaviour
 {
     public Text levelText;
+    public Text scoreText;
+    public Text timer;
+
 
     public Image transition;
     public Texture2D t1;
@@ -23,6 +26,7 @@ public class SimpleUI : MonoBehaviour
     void Update()
     {
         levelText.text = LevelBuilder.levels.ToString();
+        scoreText.text = LevelBuilder.score.ToString();
     }
     IEnumerator TransitioningOverlay(bool show, float speed, Texture2D transitionEffect)
     {
