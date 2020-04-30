@@ -151,10 +151,15 @@ public class PlayerControllerForce : MonoBehaviour
         rb.AddForce(new Vector2(0, moveVertical), ForceMode2D.Impulse);
 
         // Die/Gameover
-        if(pistonLeftCollision && pistonRightCollision)
-        {
-            StartCoroutine(GameOverDelay());
-        }
+
+
+    
+         if (pistonLeftCollision && pistonRightCollision)
+         {
+                StartCoroutine(GameOverDelay());
+         }
+        
+
     }
 
 
@@ -197,5 +202,13 @@ public class PlayerControllerForce : MonoBehaviour
             else
                 pistonRightCollision = false;
         }
+    }
+
+    private void OnDestroy()
+    {
+
+        GameObject parti = Resources.Load("Particle/Explode Dirt") as GameObject;
+        parti.transform.position = transform.position;
+
     }
 }

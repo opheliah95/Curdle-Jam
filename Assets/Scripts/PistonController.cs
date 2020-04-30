@@ -6,7 +6,7 @@ public class PistonController : MonoBehaviour
 {
     public bool isLeftPiston;
     public bool isCrushing = false;
-    bool doneCrushing = false;
+    public bool doneCrushing = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,10 +16,16 @@ public class PistonController : MonoBehaviour
 
     private void Update()
     {
-        if(doneCrushing)
+        int number = 0;
+        if(LevelBuilder.levels == 1)
         {
-            GameObject.FindWithTag("Game").GetComponent<GameManager>().GameOver();
+            number = 0;
         }
+        else
+        {
+            number = 1;
+        }
+
     }
 
 

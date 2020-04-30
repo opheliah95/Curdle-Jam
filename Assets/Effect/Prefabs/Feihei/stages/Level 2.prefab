@@ -1341,6 +1341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLeftPiston: 0
   isCrushing: 0
+  doneCrushing: 0
 --- !u!50 &2101213288521878453
 Rigidbody2D:
   serializedVersion: 4
@@ -4231,6 +4232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLeftPiston: 1
   isCrushing: 0
+  doneCrushing: 0
 --- !u!50 &5194946582678256703
 Rigidbody2D:
   serializedVersion: 4
@@ -4348,5 +4350,5 @@ MonoBehaviour:
   rightPiston: {fileID: 3597005722659342182}
   maxTime: 30
   timer: 0
-  speed: 0.5
+  speed: 3
   timeLeft: 0

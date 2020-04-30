@@ -39,7 +39,6 @@ public class BlockController : MonoBehaviour
     }
 
     // Update is called once per frame
-
     void FixedUpdate()
     {
         //rb.velocity = new Vector3(0, -fallSpeed * Time.deltaTime, 0);

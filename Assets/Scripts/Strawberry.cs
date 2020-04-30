@@ -35,7 +35,9 @@ public class Strawberry : MonoBehaviour
         // check if they are blocks
         if(obj.tag == "Box")
         {
-            if(!blocks.Contains(obj)){
+            anim.SetTrigger("Explode");
+            obj.GetComponent<Animator>().SetTrigger("Explode");
+            if (!blocks.Contains(obj)){
                 blocks.Add(obj);
             }
         }
@@ -47,7 +49,14 @@ public class Strawberry : MonoBehaviour
             obj.GetComponent<Animator>().SetTrigger("Explode");
         }
 
-        
+        // if they are berries, both die!
+        if (obj.tag == "ground")
+        {
+            anim.SetTrigger("Explode");
+            obj.GetComponent<Animator>().SetTrigger("Explode");
+        }
+
+
     }
 
     public void BerryExplosion()

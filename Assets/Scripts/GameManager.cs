@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+
+
         Destroy(player);
         canvas.transform.GetChild(0).gameObject.SetActive(true);
     }

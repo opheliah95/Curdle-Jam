@@ -11,7 +11,7 @@ public class LevelBuilder : MonoBehaviour
     float curHeight;
     public static int levels;
     public int levelCount;
-    List<GameObject> allLevels = new List<GameObject>();
+    static public List<GameObject> allLevels = new List<GameObject>();
 
     public GameObject[] levelobj;
     public GameObject curHighestLevel;
@@ -29,6 +29,7 @@ public class LevelBuilder : MonoBehaviour
 
         //curLevel = lv;
         //levels = 1;
+        allLevels.Clear();
         curLevel = null;
         firstlevel = true;
         score = 0;
@@ -37,13 +38,13 @@ public class LevelBuilder : MonoBehaviour
         //curHeight = -6;
         buildNextLevel();
         buildNextLevel();
-  
+
     }
 
     // Update is called once per frame
     void Update()
     {
-      
+
 
         if (clearLevel)
         {
@@ -54,17 +55,23 @@ public class LevelBuilder : MonoBehaviour
             clearLevel = false;
         }
 
-        if(allLevels.Count > 4)
+        if (allLevels.Count > 4)
         {
             GameObject toDestroy = allLevels[0];
             allLevels.RemoveAt(0);
             Destroy(toDestroy);
         }
 
+        if (curLevel.GetComponent<PistonManager>().leftPiston.GetComponent<PistonController>().doneCrushing)
+        {      
+             GameObject.FindWithTag("Game").GetComponent<GameManager>().GameOver();       
+        }
 
-    
+
+
     }
 
+    
     public static GameObject curLevel;
     public static void GetLevel(GameObject lvObj)
     {

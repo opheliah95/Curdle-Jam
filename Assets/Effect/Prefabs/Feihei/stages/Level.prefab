@@ -1035,6 +1035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLeftPiston: 0
   isCrushing: 0
+  doneCrushing: 0
 --- !u!1 &3597005723102656361
 GameObject:
   m_ObjectHideFlags: 0
@@ -3194,6 +3195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLeftPiston: 1
   isCrushing: 0
+  doneCrushing: 0
 --- !u!1 &3767604860087412460
 GameObject:
   m_ObjectHideFlags: 0
@@ -3290,5 +3292,5 @@ MonoBehaviour:
   rightPiston: {fileID: 3597005722659342182}
   maxTime: 30
   timer: 0
-  speed: 0.5
+  speed: 3
   timeLeft: 0
